@@ -1,11 +1,30 @@
-.input-container {
-    background: purple;
-    margin-left: auto; 
+@font-face {
+    font-family: 'wild river';
+    src: url('../../resources/fonts/wildriver.otf') 
+        format('opentype'); 
+}
+.image-link-container {
+    margin-left: auto;
     margin-right: auto;
+
+    height: 10%;
+    width: 80%;
+
+    font-family: 'wild river';
+    color: white;
 }
 
-.cameraButton {
-    height: 100px; 
-    width: 50px;
+.input-container {   
+    height: 200px;
+    width: 50%;
+
+    margin: 10px;
 }
 
+.input-container > input {
+    height: 2em;
+    border: 2px solid black; 
+    border-radius: 25px;
+    margin-top: 2em;
+
+}

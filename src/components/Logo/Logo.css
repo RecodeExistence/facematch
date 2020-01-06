@@ -2,3 +2,7 @@
     background: linear-gradient(to bottom, white, black);   
     color: white;
 }
+
+#clicked {
+    background: url('./polaroidbg.jpg');
+}
