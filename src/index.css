@@ -2,7 +2,11 @@ body {
   margin: 0; 
   padding: 0; 
   font-family: sans-serif;
-  background: linear-gradient(to right, red, black);
+  
+  /*Pure Wood Background from */
+  background-color: #331e0f;
+  background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 

@@ -1,5 +1,6 @@
 import React from 'react'; 
 import './ImageLinkForm.css';
+import Camera from './vintagecamera.png';
 
 const ImageLinkForm = () => {
     return (
@@ -9,9 +10,9 @@ const ImageLinkForm = () => {
             </p>
         
         <div className = 'center'>
-            <div className = 'pa4 br4 shadow-5 input-container'>
+            <div className = 'pa4 br2 shadow-5 input-container'>
                 <input className = "f4 pa2 w-70" type = "text" />
-                <button className = "w-30 grow f4 link ph3 pv2 dib white bg-light-purple">Detect</button>
+                <img className = "tc w-30 grow f4 link ph3 pv2 dib white cameraButton" src = { Camera } alt = "A vintage camera image in place of a button"  onClick = {() => console.log('clicked')}/>
             </div>
         </div>
         </div>  
