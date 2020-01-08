@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'wild river';
-    src: url('../../resources/fonts/wildriver.otf') 
+    src: url('../src/resources/fonts/wildriver.otf')
         format('opentype'); 
 }
 
