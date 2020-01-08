@@ -1,30 +1,14 @@
-@font-face {
-    font-family: 'wild river';
-    src: url('../../resources/fonts/wildriver.otf') 
-        format('opentype'); 
+
+
+.input-container {
+    height: 1em; 
+    width: 60%;
 }
-.image-link-container {
-    margin-left: auto;
-    margin-right: auto;
-
-    height: 10%;
-    width: 80%;
-
-    font-family: 'wild river';
-    color: white;
+.input-container img {
+    height: 100px;
+    width: 100px;
 }
 
-.input-container {   
-    height: 200px;
-    width: 50%;
-
-    margin: 10px;
-}
-
-.input-container > input {
-    height: 2em;
-    border: 2px solid black; 
-    border-radius: 25px;
-    margin-top: 2em;
-
+.input-container input {
+    margin-left: 50PX;
 }

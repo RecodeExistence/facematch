@@ -1,6 +1,7 @@
 .Tilt {
     background: linear-gradient(to bottom, white, black);   
     color: white;
+    margin-bottom: 1em;
 }
 
 #clicked {
