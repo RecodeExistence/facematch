@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'wild river';
+    src: url('../../resources/fonts/wildriver.otf') 
+        format('opentype'); 
+}
+
 body {
     color: white;
 }
