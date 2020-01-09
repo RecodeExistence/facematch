@@ -1,11 +1,10 @@
-@font-face {
-    font-family: 'wild river';
-    src: url('../src/resources/fonts/wildriver.otf')
-        format('opentype'); 
-}
 
 body {
     color: white;
+}
+
+body button {
+    cursor: pointer;
 }
 
 .center {

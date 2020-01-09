@@ -7,8 +7,10 @@
 .input-container img {
     height: 100px;
     width: 100px;
+    margin-bottom: 10px;
 }
 
 .input-container input {
-    margin-left: 50PX;
+    margin-left: 130px;
+    border-radius: 25px;
 }
