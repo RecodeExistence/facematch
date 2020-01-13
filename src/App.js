@@ -21,7 +21,7 @@ class App extends Component {
   constructor() {
     super(); 
     this.state = {
-      input: '',
+      input: 'https://i0.wp.com/metro.co.uk/wp-content/uploads/2019/01/sei_47528443-73a7.jpg?quality=90&strip=all&zoom=1&resize=644%2C338&ssl=1',
       imageUrl: ''
     }
   }
@@ -36,7 +36,7 @@ onSubmitClicked = () => {
     .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
     .then(
     function(response) {
-      console.log('response: ', response);
+      console.log('response: ', response.outputs[0]);
     },
     function(err) {
       // there was an error
@@ -49,10 +49,11 @@ onSubmitClicked = () => {
 
   render() {
     const { input } = this.state;
+    const { onSubmitClicked } = this.onSubmitClicked;
     return (
       <div className="App">
         <Navigation /> 
-        <Logo input = {input} />
+        <Logo input = {input} onSubmitClicked = {onSubmitClicked} />
         <Rank />
         <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
         <FaceRecog imageUrl = {this.state.imageUrl} />
