@@ -2,7 +2,9 @@
 
 .input-container {
     height: 1em; 
-    width: 60%;
+    width: 100%;
+    margin-bottom: 1em;
+
 }
 .input-container img {
     height: 100px;
@@ -13,4 +15,5 @@
 .input-container input {
     margin-left: 130px;
     border-radius: 25px;
+    width: 100%;
 }

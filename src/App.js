@@ -3,7 +3,6 @@ import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import Rank from './components/Rank/Rank';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
-import FaceRecog from './components/FaceRecog/FaceRecog';
 
 
 /* CSS imports */
@@ -52,11 +51,10 @@ onSubmitClicked = () => {
     const { onSubmitClicked } = this.onSubmitClicked;
     return (
       <div className="App">
-        <Navigation /> 
+         <Navigation /> 
+         <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
         <Logo input = {input} onSubmitClicked = {onSubmitClicked} />
         <Rank />
-        <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
-        <FaceRecog imageUrl = {this.state.imageUrl} />
       </div>
     );
   }

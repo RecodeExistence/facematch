@@ -9,7 +9,7 @@ const Logo = ({ onSubmitClicked, input }) => {
         {onSubmitClicked}
             <Tilt className = 'Tilt br2 ba b--white br4 shadow-2 tc pa4' options = {{ max : 30 }} style = {{height: '80%', width: '80%'}} >
                 <div className = 'Tilt-inner'>
-                    <img src = {input} alt = 'logo of a face'/>
+                    <img src = {input} style = {{'height' : '50%', 'width' : '80%'}} alt = 'logo of a face'/>
                 </div>
             </Tilt>
 
