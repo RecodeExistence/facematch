@@ -20,41 +20,63 @@ class App extends Component {
   constructor() {
     super(); 
     this.state = {
-      input: 'https://i0.wp.com/metro.co.uk/wp-content/uploads/2019/01/sei_47528443-73a7.jpg?quality=90&strip=all&zoom=1&resize=644%2C338&ssl=1',
-      imageUrl: ''
+      input: '',
+      imageUrl: '', 
+      box: {}
     }
   }
+
+  componentDidMount() {
+    this.setState({input: ''})
+  }
+
+
 
 onInputChange = (event) => {
   this.setState({input: event.target.value});
 }
 
+calculateFaceLocation = data => {
+  const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+  const image = document.getElementById('inputimage'); 
+  const width = Number(image.width);
+  const height = Number(image.height);
+    return {
+      leftCol: clarifaiFace.left_col * width, 
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
+    }
+}
+
+displayFaceBox = (box) => {
+  console.log(box);
+  this.setState({box:box})
+}
+
+
+
+
 onSubmitClicked = () => {
   this.setState({imageUrl:this.state.input});
   app.models
     .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-    .then(
-    function(response) {
-      console.log('response: ', response.outputs[0]);
-    },
-    function(err) {
-      // there was an error
-      console.log('error: ', err);
-    }
-  );
+    .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
+    .catch(e => console.log(e));
 }
-  
 
 
-  render() {
+render() {
     const { input } = this.state;
     const { onSubmitClicked } = this.onSubmitClicked;
+    const { box } = this.state;
     return (
       <div className="App">
          <Navigation /> 
          <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
-        <Logo input = {input} onSubmitClicked = {onSubmitClicked} />
-        <Rank />
+        <Logo input = {input} box = {box} 
+        onSubmitClicked = {onSubmitClicked} />
+       <Rank />
       </div>
     );
   }
