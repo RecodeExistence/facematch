@@ -3,6 +3,7 @@ import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import Rank from './components/Rank/Rank';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
+import SignIn from './components/SignIn/SignIn';
 
 
 /* CSS imports */
@@ -35,7 +36,7 @@ class App extends Component {
 onInputChange = (event) => {
   this.setState({input: event.target.value});
 }
-
+ 
 calculateFaceLocation = data => {
   const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
   const image = document.getElementById('inputimage'); 
@@ -72,7 +73,8 @@ render() {
     const { box } = this.state;
     return (
       <div className="App">
-         <Navigation /> 
+         <Navigation />
+         <SignIn /> 
          <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
         <Logo input = {input} box = {box} 
         onSubmitClicked = {onSubmitClicked} />
