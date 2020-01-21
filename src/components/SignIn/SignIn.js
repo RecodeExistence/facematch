@@ -4,7 +4,7 @@ const SignIn = ({ onRouteChange}) => {
     return (
     <article className="br2 ba b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
         <main className="ba bw1 pa4 black-80" style={{'borderRadius' : '25px'}}>
-            <form className="measure">
+            <div className="measure">
                 <fieldset id="sign-in" className="ba b--transparent ph0 mh0 tc">
                 <legend className="f1 fw6 ph0 mh0 tc">Sign In</legend>
                 <div className="mt3">
@@ -20,11 +20,11 @@ const SignIn = ({ onRouteChange}) => {
                 </div>
 
                 <div className = "1h-copy mt3">
-                    <p onClick = {() => onRouteChange('register')} href = "#0" className = "f6 link dim black db">Register</p>
+                    <p onClick = {() => onRouteChange('register')} href = "#0" className = "f6 link dim black db pointer">Register</p>
                 </div>
                 </fieldset>
                 
-            </form>
+            </div>
             </main>
             </article>
 

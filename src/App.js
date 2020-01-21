@@ -60,15 +60,22 @@ onSubmitClicked = () => {
     .catch(e => console.log(e));
 }
 
-onRouteChange = route =>  this.setState({route: route});
+onRouteChange = route =>  {
+  if(route === "signout") {
+    this.setState({userSignedIn: false})
+  } else if (route === 'home') {
+    this.setState({userSignedIn: true})
+  }
+    this.setState({route: route});
+}
 
 render() {
-    const { input, box, route} = this.state;
+    const { input, box, route, userSignedIn} = this.state;
     const { onSubmitClicked } = this.onSubmitClicked;
     
     return (
       <div className="App">
-         <Navigation onRouteChange = {this.onRouteChange} />
+         <Navigation onRouteChange = {this.onRouteChange} userSignedIn = {userSignedIn} />
          
          {route === "home" ? 
          <div className = "signedInDisplay">
