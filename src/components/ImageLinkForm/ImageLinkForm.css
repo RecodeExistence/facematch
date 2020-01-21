@@ -1,3 +1,19 @@
+
+
 .input-container {
-    background: linear-gradient(to bottom, black, white); 
+    height: 1em; 
+    width: 100%;
+    margin-bottom: 1em;
+
+}
+.input-container img {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.input-container input {
+    margin-left: 130px;
+    border-radius: 25px;
+    width: 100%;
 }

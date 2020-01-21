@@ -1,4 +1,6 @@
-.Tilt {
-    background: whitesmoke;   
-    color: white;
+.bounding-box {
+    position: absolute; 
+    box-shadow: 0 0 0 3px #149df1 inset; 
+    justify-content: center; 
+    cursor: pointer;
 }

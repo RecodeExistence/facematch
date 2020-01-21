@@ -1,15 +1,19 @@
 import React from 'react';
 import Tilt from 'react-tilt';
 import './Logo.css';
-import facelogo from './facelogo.png'; 
 
-const Logo = () => {
+const Logo = ({ box, onSubmitClicked, input }) => {
+    
     return (
         <div className = 'ma4 mt0 center'>
-            <Tilt className = 'Tilt br2 ba b--white br4 shadow-2 tc pa4' options = {{ max : 30 }} style = {{height: '150px', width: '150px'}} >
+        {onSubmitClicked}
+            <Tilt className = 'Tilt br2 ba b--white br4 shadow-2 tc pa4' options = {{ max : 30 }} >
                 <div className = 'Tilt-inner'>
-                    <img src = {facelogo} alt = 'logo of a face'/>
+               
+                    <img id = 'inputimage' src = {input} style = {{'height' : '100%', 'width' : '100%'}} alt = 'logo of a face'/>
                 </div>
+                 <div className = "bounding-box" style={{top: box.topRow, right: box.rightCol, bottom: box.bottomRow, left: box.leftCol}}></div>
+                
             </Tilt>
 
         </div>
