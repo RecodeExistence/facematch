@@ -9,7 +9,6 @@ import SignIn from './components/SignIn/SignIn';
 /* CSS imports */
 import './App.css'
 import 'tachyons';
-
 /*Clarify API*/
 import Clarifai from 'clarifai';
 const app = new Clarifai.App({
@@ -27,41 +26,37 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({input: ''})
-  }
-
-
-
+ 
 onInputChange = (event) => {
   this.setState({input: event.target.value});
 }
  
 calculateFaceLocation = data => {
-  const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+  const clarifaiFace = data.outputs[0].data.regions[2].region_info.bounding_box;
   const image = document.getElementById('inputimage'); 
   const width = Number(image.width);
   const height = Number(image.height);
     return {
-      leftCol: clarifaiFace.left_col * width, 
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
+      leftCol: (clarifaiFace.left_col * width)  + 30, 
+      topRow: (clarifaiFace.top_row * height) + 30,
+      rightCol: width - (clarifaiFace.right_col * width) + 30,
+      bottomRow: height - (clarifaiFace.bottom_row * height) + 30
     }
 }
 
 displayFaceBox = (box) => {
   console.log(box);
-  this.setState({box:box})
+  this.setState({box:box});
 }
 
 
 
 
 onSubmitClicked = () => {
-  this.setState({imageUrl:this.state.input});
+  const { input } = this.state;
+  this.setState({imageUrl:input});
   app.models
-    .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+    .predict(Clarifai.FACE_DETECT_MODEL, input)
     .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
     .catch(e => console.log(e));
 }
@@ -74,7 +69,7 @@ render() {
     return (
       <div className="App">
          <Navigation />
-         <SignIn /> 
+         {/* <SignIn /> */} 
          <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
         <Logo input = {input} box = {box} 
         onSubmitClicked = {onSubmitClicked} />

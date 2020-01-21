@@ -1,12 +1,3 @@
-.Tilt {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-#clicked {
-    background: url('./polaroidbg.jpg');
-}
-
 .bounding-box {
     position: absolute; 
     box-shadow: 0 0 0 3px #149df1 inset; 
