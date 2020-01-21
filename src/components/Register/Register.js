@@ -1,15 +1,15 @@
-import React from 'react'
-import './Register.css'
-const Register = () => {
+import React from 'react';
+
+const Register = ({ onRouteChange}) => {
     return (
-    <article className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
-        <main className="pa4 black-80">
+    <article className="br2 ba b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
+        <main className="ba bw1 pa4 black-80" style={{'borderRadius' : '25px'}}>
             <form className="measure">
-                <fieldset id="Register" className="ba b--transparent ph0 mh0">
-                <legend className="f1 fw6 ph0 mh0">Register</legend>
+                <fieldset id="register" className="ba b--transparent ph0 mh0 tc">
+                <legend className="f1 fw6 ph0 mh0 tc">Register</legend>
                 
                 <div className="mt3">
-                    <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+                    <label className="db fw6 lh-copy f6" htmlFor="User">Username</label>
                     <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name"  id="name" />
                 </div>
 
@@ -21,10 +21,12 @@ const Register = () => {
                     <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                     <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" />
                 </div>
-                </fieldset>
                 <div className="">
-                <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
+                <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" onClick = {() => onRouteChange('home')} />
                 </div>
+
+                </fieldset>
+                
             </form>
             </main>
             </article>

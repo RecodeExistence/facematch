@@ -70,14 +70,27 @@ render() {
       <div className="App">
          <Navigation onRouteChange = {this.onRouteChange} />
          
-         {route === "signin" ? 
-            <SignIn onRouteChange = {this.onRouteChange} /> :
-            <div className = "signedInDisplay">
-                <Logo input = {input} box = {box} 
-              onSubmitClicked = {onSubmitClicked} />
-                <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
-                <Rank />
+         {route === "home" ? 
+         <div className = "signedInDisplay">
+                <Logo 
+                  input = {input} 
+                  box = {box} 
+                  onSubmitClicked = {onSubmitClicked} 
+                />
+
+                <ImageLinkForm  
+                  onInputChange = {this.onInputChange} 
+                  submitClicked = {this.onSubmitClicked}
+                />
+                <Rank /> 
             </div>
+            : (
+              route === 'signin' 
+              ?
+              <SignIn onRouteChange = {this.onRouteChange} /> 
+              : 
+              <Register onRouteChange = {this.onRouteChange}/> 
+            )
          }
       </div>
     );

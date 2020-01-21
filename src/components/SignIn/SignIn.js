@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+
 const SignIn = ({ onRouteChange}) => {
     return (
     <article className="br2 ba b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
@@ -19,7 +20,7 @@ const SignIn = ({ onRouteChange}) => {
                 </div>
 
                 <div className = "1h-copy mt3">
-                    <a onClick = {() => onRouteChange('register')} href = "#0" className = "f6 link dim black db">Register</a>
+                    <p onClick = {() => onRouteChange('register')} href = "#0" className = "f6 link dim black db">Register</p>
                 </div>
                 </fieldset>
                 
