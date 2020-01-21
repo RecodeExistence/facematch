@@ -12,7 +12,7 @@ import 'tachyons';
 /*Clarify API*/
 import Clarifai from 'clarifai';
 const app = new Clarifai.App({
-  apiKey: '36d3e539c74840cba994cda478933ea8'
+  apiKey: 'e1a02ce04ae9420e9920caa9c490ead2'
  });
  
 
@@ -20,9 +20,10 @@ class App extends Component {
   constructor() {
     super(); 
     this.state = {
-      input: '',
+      input: './components/Logo/polaroidbg.jpg',
       imageUrl: '', 
-      box: {}
+      box: {}, 
+      userSignedIn: false
     }
   }
 
@@ -71,8 +72,9 @@ render() {
          <Navigation />
          {/* <SignIn /> */} 
          <ImageLinkForm  onInputChange = {this.onInputChange} submitClicked = {this.onSubmitClicked}/>
-        <Logo input = {input} box = {box} 
+         <Logo input = {input} box = {box} 
         onSubmitClicked = {onSubmitClicked} />
+                
        <Rank />
       </div>
     );
