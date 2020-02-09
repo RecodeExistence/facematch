@@ -27,7 +27,14 @@ class App extends Component {
       imageUrl: './components/Logo/polaroidbg.jpg', 
       box: {},
       route: 'signin', 
-      userSignedIn: false
+      userSignedIn: false, 
+      user:  {
+        id: '', 
+        name: '', 
+        email: '',
+        entries: 0, 
+        joined: ''
+      }
     }
   }
 
@@ -36,7 +43,18 @@ class App extends Component {
 onInputChange = (event) => {
   this.setState({input: event.target.value});
 }
- 
+
+loadUser = (userData) => {
+  this.setState({
+    user:{ 
+    id: userData.id,
+        name: userData.name,  
+        email: userData.email,
+        entries: userData.entries, 
+        joined: userData.joined
+  }})
+}
+
 calculateFaceLocation = data => {
   const clarifaiFace = data.outputs[0].data.regions[2].region_info.bounding_box;
   const image = document.getElementById('inputimage'); 
@@ -99,7 +117,7 @@ render() {
               ?
               <SignIn onRouteChange = {this.onRouteChange} /> 
               : 
-              <Register onRouteChange = {this.onRouteChange}/> 
+              <Register loaduser = {this.loadUser} onRouteChange = {this.onRouteChange}/> 
             )
          }
       </div>
