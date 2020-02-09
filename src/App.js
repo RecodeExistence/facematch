@@ -47,7 +47,7 @@ onInputChange = (event) => {
 loadUser = (userData) => {
   this.setState({
     user:{ 
-    id: userData.id,
+        id: userData.id,
         name: userData.name,  
         email: userData.email,
         entries: userData.entries, 
@@ -117,7 +117,7 @@ render() {
               ?
               <SignIn onRouteChange = {this.onRouteChange} /> 
               : 
-              <Register loaduser = {this.loadUser} onRouteChange = {this.onRouteChange}/> 
+              <Register loadUser = {this.loadUser} onRouteChange = {this.onRouteChange}/> 
             )
          }
       </div>

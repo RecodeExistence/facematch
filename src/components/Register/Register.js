@@ -15,29 +15,28 @@ class Register extends React.Component{
    onEmailChange = (event) => this.setState({registerEmail: event.target.value});
    onPassChange = (event) => this.setState({registerPass: event.target.value});
 
-   onRegisterClick = () => {
-       const { registerName, registerEmail, registerPass } = this.state; 
-       fetch('http://localhost:3000/register', {
-        method: 'post', 
-        headers: {
-            'Content-Type' : 'application/json' 
-        }, 
+   onRegisterClick = (event) => {
+       event.preventDefault(); 
+    fetch('http://localhost:3000/register', {
+        method: 'POST', 
+        headers: {'Content-Type' : 'application/json'}, 
         body: JSON.stringify({
-            name: registerName,
-            email: registerEmail, 
-            password: registerPass
-            })
-       })
-        .then(response => response.json())
-            .then(user => {
-                if(user) {
-                    this.props.loadUser(user);
-                    this.props.onRouteChange('home')
-                }
-            })
- };
+            email: this.state.registerEmail, 
+            password: this.state.registerPass, 
+            name: this.state.registerName
+        })
+    })
+    .then(response => response.json())
+    .then(user => {
+        if(user) {
+            this.props.loadUser(user)
+            this.props.onRouteChange('home');
+        }
+    })
+}
 
     render() {
+        const { onRouteChange } = this.props; 
         return (
         <article className="br2 ba b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
             <main className="ba bw1 pa4 black-80" style={{'borderRadius' : '25px'}}>
