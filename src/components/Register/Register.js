@@ -16,7 +16,25 @@ class Register extends React.Component{
    onPassChange = (event) => this.setState({registerPass: event.target.value});
 
    onRegisterClick = () => {
-      console.log(this.state);
+       const { registerName, registerEmail, registerPass } = this.state; 
+       fetch('http://localhost:3000/register', {
+        method: 'post', 
+        headers: {
+            'Content-Type' : 'application/json' 
+        }, 
+        body: JSON.stringify({
+            name: registerName,
+            email: registerEmail, 
+            password: registerPass
+            })
+       })
+        .then(response => response.json())
+            .then(user => {
+                if(user) {
+                    this.props.loadUser(user);
+                    this.props.onRouteChange('home')
+                }
+            })
  };
 
     render() {
