@@ -56,7 +56,7 @@ loadUser = (userData) => {
 }
 
 calculateFaceLocation = data => {
-  const clarifaiFace = data.outputs[0].data.regions[2].region_info.bounding_box;
+  const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
   const image = document.getElementById('inputimage'); 
   const width = Number(image.width);
   const height = Number(image.height);
@@ -77,7 +77,22 @@ onSubmitClicked = () => {
   this.setState({imageUrl:input});
   app.models
     .predict(Clarifai.FACE_DETECT_MODEL, input)
-    .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
+    .then(response => {
+      if(response) {
+        fetch('http://localhost:3000/image', {
+          method: 'put', 
+          headers: {'Content-Type' : 'application/json'}, 
+          body: JSON.stringify({
+            id: this.state.user.id
+          })
+        })
+        .then(response => response.json())
+        .then(count => {
+          this.setState({user: {entries: count}})
+        })
+      }
+      this.displayFaceBox(this.calculateFaceLocation(response))
+    })
     .catch(e => console.log(e));
 }
 
@@ -95,6 +110,7 @@ render() {
     const { onSubmitClicked } = this.onSubmitClicked;
     
     return (
+ 
       <div className="App">
          <Navigation onRouteChange = {this.onRouteChange} userSignedIn = {userSignedIn} />
          
@@ -110,12 +126,12 @@ render() {
                   onInputChange = {this.onInputChange} 
                   submitClicked = {this.onSubmitClicked}
                 />
-                <Rank /> 
+                <Rank name = {this.state.user.name} entries = {this.state.user.entries}/> 
             </div>
             : (
               route === 'signin' 
               ?
-              <SignIn onRouteChange = {this.onRouteChange} /> 
+              <SignIn loadUser = {this.loadUser} onRouteChange = {this.onRouteChange} /> 
               : 
               <Register loadUser = {this.loadUser} onRouteChange = {this.onRouteChange}/> 
             )
