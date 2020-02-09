@@ -40,7 +40,7 @@ class Register extends React.Component{
         return (
         <article className="br2 ba b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
             <main className="ba bw1 pa4 black-80" style={{'borderRadius' : '25px'}}>
-                <form className="measure">
+                <form className="measure" onSubmit={this.onRegisterClick}>
                     <fieldset id="register" className="ba b--transparent ph0 mh0 tc">
                     <legend className="f1 fw6 ph0 mh0 tc">Register</legend>
                     
@@ -58,7 +58,7 @@ class Register extends React.Component{
                         <input onChange = {this.onPassChange} className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" />
                     </div>
                     <div className="">
-                    <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" onClick = {this.onRegisterClick} />
+                    <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register"/>
                     </div>
 
                     </fieldset>
