@@ -16,8 +16,10 @@ class Register extends React.Component{
    onPassChange = (event) => this.setState({registerPass: event.target.value});
 
    onRegisterClick = (event) => {
+       
     event.preventDefault();
-    fetch('http://localhost:3000/register', {
+    
+    fetch('http://localhost:3000/register', {    
         method: 'POST', 
         headers: {'Content-Type' : 'application/json'}, 
         body: JSON.stringify({
@@ -26,14 +28,14 @@ class Register extends React.Component{
             name: this.state.registerName
         })
     })
-    .then(response => response.json())
+    .then(response => (response.json()))
     .then(user => {
-        if(user) {
+        if(!user) {
+            alert('invalid register'); 
+        } else {
             this.props.loadUser(user);
             this.props.onRouteChange('home');
-        } else {
-            alert('Invalid action.')
-        }
+        } 
     })
 }
 

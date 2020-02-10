@@ -88,12 +88,12 @@ onSubmitClicked = () => {
         })
         .then(response => response.json())
         .then(count => {
-          this.setState({user: {entries: count}})
+          this.setState(Object.assign(this.state.user,  {entries: count}))
         })
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
     })
-    .catch(e => console.log(e));
+    .catch((e => console.log(e)));
 }
 
 onRouteChange = route =>  {
